@@ -15,7 +15,11 @@ namespace LongPressCallBack
 
         private void Calendar_LongPressed(object sender, CalendarLongPressedEventArgs e)
         {
-            App.Current.MainPage.DisplayAlert("DateCellHold Response", "DateCell " + e.Date.Day + " has been long pressed", "Ok");
+            var mainPage = App.Current?.Windows.FirstOrDefault()?.Page;
+            if (mainPage != null)
+            {
+                mainPage.DisplayAlert("DateCellHold Response", "DateCell " + e.Date.Day + " has been long pressed", "Ok");
+            }
         }
 
         protected override void OnDetachingFrom(SfCalendar bindable)
